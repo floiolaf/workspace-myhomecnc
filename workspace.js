@@ -195,7 +195,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
         },
         /**
          * Mod by FF - Load the CAM widget via chilipeppr.load()
-         */
+        
         loadCamWidget2: function(callback) {
 
             var that = this;
@@ -215,7 +215,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
                   }
                 );
               }
-            );
+            ); */
         /**
          * Load the Console widget via chilipeppr.load()
          */
