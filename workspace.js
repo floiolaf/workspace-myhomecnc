@@ -73,6 +73,12 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             // Most workspaces will instantiate the Serial Port JSON Server widget
             this.loadSpjsWidget();
             
+            // Mod by FF - Load Cam Widget
+            this.loadCamWidget();
+            
+            // Mod by FF - Load Cam Widget
+            this.loadCamWidget2();
+            
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
             
@@ -160,6 +166,54 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
 
                     });
                 }
+            );
+        },
+        /**
+         * Mod by FF - Load the CAM widget via chilipeppr.load()
+         */
+        loadCamWidget: function(callback) {
+
+            var that = this;
+
+            chilipeppr.load(
+              "#com-chilipeppr-widget-cam-instance",
+              "http://raw.githubusercontent.com/chilipeppr/widget-cam/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetCam
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
+                  function(myObjWidgetCam) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / Cam just got loaded.", myObjWidgetCam);
+                    myObjWidgetCam.init();
+                  }
+                );
+              }
+            );
+        },
+        /**
+         * Mod by FF - Load the CAM widget via chilipeppr.load()
+         */
+        loadCamWidget2: function(callback) {
+
+            var that = this;
+
+            chilipeppr.load(
+              "#com-chilipeppr-widget-cam-instance2",
+              "http://raw.githubusercontent.com/chilipeppr/widget-cam/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetCam
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
+                  function(myObjWidgetCam) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / Cam just got loaded.", myObjWidgetCam);
+                    myObjWidgetCam.init();
+                  }
+                );
+              }
             );
         },
         /**
