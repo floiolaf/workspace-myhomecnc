@@ -296,11 +296,8 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             // Most workspaces will instantiate the Serial Port JSON Server widget
             this.loadSpjsWidget();
             
-            // Mod by FF - Load Cam Widget
-            this.loadCamWidget();
-            
-            // Mod by FF - Load Cam Widget
-            /*this.loadCamWidget2();*/
+            // Mod by FF - Load myCam Widget
+            this.loadMyCamWidget();
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
@@ -324,8 +321,6 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             setTimeout(function() {
                 $(window).trigger('resize');
             }, 3000);
-
-
         },
         /**
          * Returns the billboard HTML, CSS, and Javascript for this Workspace. The billboard
@@ -392,52 +387,29 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             );
         },
         /**
-         * Mod by FF - Load the CAM widget via chilipeppr.load()
+         * Mod by FF - Load the myCAM widget via chilipeppr.load()
          */
-        loadCamWidget: function(callback) {
-
-            var that = this;
-
+        loadMyCamWidget: function(callback) {
+ 
+            var that = this; 
+ 
             chilipeppr.load(
-              "#com-chilipeppr-widget-cam-instance",
-              "http://raw.githubusercontent.com/chilipeppr/widget-cam/master/auto-generated-widget.html",
+              "#myDivWidgetMycam",
+              "http://raw.githubusercontent.com/floiolaf/widget-mycam/master/auto-generated-widget.html",
               function() {
-                // Callback after widget loaded into #myDivWidgetCam
+                // Callback after widget loaded into #myDivWidgetMycam
                 // Now use require.js to get reference to instantiated widget
                 cprequire(
-                  ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
-                  function(myObjWidgetCam) {
+                  ["inline:com-chilipeppr-widget-mycam"], // the id you gave your widget
+                  function(myObjWidgetMycam) {
                     // Callback that is passed reference to the newly loaded widget
-                    console.log("Widget / Cam just got loaded.", myObjWidgetCam);
-                    myObjWidgetCam.init();
+                    console.log("Widget / myCam just got loaded.", myObjWidgetMycam);
+                    myObjWidgetMycam.init();
                   }
                 );
               }
             );
         },
-        /**
-         * Mod by FF - Load the CAM widget via chilipeppr.load()
-        
-        loadCamWidget2: function(callback) {
-
-            var that = this;
-
-            chilipeppr.load(
-              "#com-chilipeppr-widget-cam-instance2",
-              "http://raw.githubusercontent.com/tbfleming/widget-cam2d/master/auto-generated-widget.html",
-              function() {
-                // Callback after widget loaded into #myDivOrgJscutWidgetCam2d
-                // Now use require.js to get reference to instantiated widget
-                cprequire(
-                  ["inline:org-jscut-widget-cam2d"], // the id you gave your widget
-                  function(myObjOrgJscutWidgetCam2d) {
-                    // Callback that is passed reference to the newly loaded widget
-                    console.log("Widget / Template just got loaded.", myObjOrgJscutWidgetCam2d);
-                    myObjOrgJscutWidgetCam2d.init();
-                  }
-                );
-              }
-            ); */
         /**
          * Load the Console widget via chilipeppr.load()
          */
@@ -1772,8 +1744,8 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
                         <div id="com-chilipeppr-tinyg" class="">Load TinyG Here</div>
                         <!-- WebRTC Client -->
                         <div id="com-chilipeppr-webrtcclient" class="hidden">Load WebRTC Client Here</div>
-                        <!-- Cam Widget 1st instance-->
-                        <div id="com-chilipeppr-widget-cam-instance" class="">Load Cam Widget Here</div> 
+                        <!-- myCam Widget instance-->
+                        <div id="myDivWidgetMycam" class="">Load myCam Widget Here</div> 
                         <!-- Serial Port Selector -->
                         <div id="com-chilipeppr-widget-spjs-instance" class="">Load Serial Port Selector Here</div>
                     </div>

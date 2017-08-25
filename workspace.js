@@ -73,10 +73,8 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             // Most workspaces will instantiate the Serial Port JSON Server widget
             this.loadSpjsWidget();
             
-            
-            
-            // Mod by FF - Load Cam Widget
-            this.loadCamWidget2();
+            // Mod by FF - Load myCam Widget
+            this.loadMyCamWidget();
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
@@ -100,8 +98,6 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             setTimeout(function() {
                 $(window).trigger('resize');
             }, 3000);
-
-
         },
         /**
          * Returns the billboard HTML, CSS, and Javascript for this Workspace. The billboard
@@ -168,32 +164,29 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             );
         },
         /**
-         * Mod by FF - Load the CAM widget via chilipeppr.load()
+         * Mod by FF - Load the myCAM widget via chilipeppr.load()
          */
-        
-        /**
-         * Mod by FF - Load the CAM widget via chilipeppr.load()
-        */
-        loadCamWidget2: function(callback) {
-
-            var that = this;
-
+        loadMyCamWidget: function(callback) {
+ 
+            var that = this; 
+ 
             chilipeppr.load(
-              "#myDivWidgetCam",
-              "http://raw.githubusercontent.com/xpix/widget-cam/master/auto-generated-widget.html",
+              "#myDivWidgetMycam",
+              "http://raw.githubusercontent.com/floiolaf/widget-mycam/master/auto-generated-widget.html",
               function() {
-                // Callback after widget loaded into #myDivWidgetCam
+                // Callback after widget loaded into #myDivWidgetMycam
                 // Now use require.js to get reference to instantiated widget
                 cprequire(
-                  ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
-                  function(myObjWidgetCam) {
+                  ["inline:com-chilipeppr-widget-mycam"], // the id you gave your widget
+                  function(myObjWidgetMycam) {
                     // Callback that is passed reference to the newly loaded widget
-                    console.log("Widget / Cam just got loaded.", myObjWidgetCam);
-                    myObjWidgetCam.init();
+                    console.log("Widget / myCam just got loaded.", myObjWidgetMycam);
+                    myObjWidgetMycam.init();
                   }
                 );
               }
             );
+        },
         /**
          * Load the Console widget via chilipeppr.load()
          */
