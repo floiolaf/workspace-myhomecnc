@@ -75,10 +75,9 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             
             // Mod by FF - Load Cam Widget
             this.loadCamWidget();
-            /*this.loadCamWidget2();*/
             
             // Mod by FF - Load Cam Widget
-            this.loadCamWidget2();
+            /*this.loadCamWidget2();*/
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
