@@ -200,21 +200,21 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             var that = this;
 
             chilipeppr.load(
-              "#com-chilipeppr-widget-cam-instance2",
-              "http://raw.githubusercontent.com/tbfleming/widget-cam2d/master/auto-generated-widget.html",
+              "#myDivWidgetCam",
+              "http://raw.githubusercontent.com/xpix/widget-cam/master/auto-generated-widget.html",
               function() {
-                // Callback after widget loaded into #myDivOrgJscutWidgetCam2d
+                // Callback after widget loaded into #myDivWidgetCam
                 // Now use require.js to get reference to instantiated widget
                 cprequire(
-                  ["inline:org-jscut-widget-cam2d"], // the id you gave your widget
-                  function(myObjOrgJscutWidgetCam2d) {
+                  ["inline:com-chilipeppr-widget-cam"], // the id you gave your widget
+                  function(myObjWidgetCam) {
                     // Callback that is passed reference to the newly loaded widget
-                    console.log("Widget / Template just got loaded.", myObjOrgJscutWidgetCam2d);
-                    myObjOrgJscutWidgetCam2d.init();
+                    console.log("Widget / Cam just got loaded.", myObjWidgetCam);
+                    myObjWidgetCam.init();
                   }
                 );
               }
-            ); 
+            );
         /**
          * Load the Console widget via chilipeppr.load()
          */
