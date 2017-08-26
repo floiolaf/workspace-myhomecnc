@@ -78,6 +78,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             
             // Mod by FF - Load MyGPIO
             //this.loadMyGPIO();
+            //this.toggleGpio();
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
