@@ -76,9 +76,6 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             // Mod by FF - Load myCam Widget
             this.loadMyCamWidget();
             
-            // Mod by FF - Load MyGPIO
-            //this.loadMyGPIO();
-            //this.toggleGpio();
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
@@ -248,29 +245,6 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
                 }
             );
         },
-
-        /*
-        // GPIO
-        // net-delarre-widget-gpio
-        loadMyGPIO: function(callback) {
-            var that = this;
-            chilipeppr.load(
-                "#com-chilipeppr-ws-gpio",
-                "http://raw.githubusercontent.com/chilipeppr/widget-gpio/master/auto-generated-widget.html",
-                function() {
-                    cprequire(["inline:net-delarre-widget-gpio"], function(gpio) {
-                        that.gpioInstance = gpio;
-                        console.log("GPIO instantiated. gpioInstance:", that.gpioInstance);
-                        that.gpioInstance.init();
-                        //eagleInstance.activateWidget();
-                        //if (callback) callback();
-                    });
-                }
-            );
-        },
-        //this.gpioObj.init();
-        //End GPIO
-        */
 
         loadWidgets: function(callback) {
             
@@ -852,6 +826,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
                     this.gpioDiv = $('#com-chilipeppr-ws-gpio');
                     this.setupBtn();
                     console.log("done instantiating GPIO add-on widget");
+                    this.showGpio();
                 },
                 setupBtn: function() {
                     this.gpioBtn.click(this.toggleGpio.bind(this));
