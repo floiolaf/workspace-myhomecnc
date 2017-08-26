@@ -77,7 +77,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             this.loadMyCamWidget();
             
             // Mod by FF - Load MyGPIO
-            this.loadMyGPIO();
+            //this.loadMyGPIO();
             
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
@@ -248,6 +248,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             );
         },
 
+        /*
         // GPIO
         // net-delarre-widget-gpio
         loadMyGPIO: function(callback) {
@@ -268,6 +269,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
         },
         //this.gpioObj.init();
         //End GPIO
+        */
 
         loadWidgets: function(callback) {
             
@@ -839,7 +841,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
 
             // Dynamically load the GPIO widget, i.e. wait til user clicks on the button
             // first time.
-            /*
+        
             this.gpioObj = {
                 gpioBtn: null,
                 gpioDiv: null,
@@ -902,7 +904,7 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             };
             this.gpioObj.init();
             //End GPIO
-            */
+        
 
             // SuttleXpress
             // Dynamically load the ShuttleXpress Widget. i.e. wait til user clicks on 

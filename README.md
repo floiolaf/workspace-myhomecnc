@@ -142,7 +142,45 @@ and inits them.</td></tr><tr valign="top"><td>getBillboard</td><td>function</td>
 is used by the home page, the workspace picker, and the fork pulldown to show a
 consistent name/image/description tag for the workspace throughout the ChiliPeppr ecosystem.</td></tr><tr valign="top"><td>addBillboardToWorkspaceMenu</td><td>function</td><td>function () <br><br>Inject the billboard into the Workspace upper right corner pulldown which
 follows the standard template for workspace pulldown menus.</td></tr><tr valign="top"><td>setupResize</td><td>function</td><td>function () <br><br>Listen to window resize event.</td></tr><tr valign="top"><td>onResize</td><td>function</td><td>function () <br><br>When browser window resizes, forcibly resize the Console window</td></tr><tr valign="top"><td>loadSpjsWidget</td><td>function</td><td>function (callback) <br><br>Load the Serial Port JSON Server widget via chilipeppr.load()</td></tr><tr valign="top"><td>loadMyCamWidget</td><td>function</td><td>function (callback) <br><br>Mod by FF - Load the myCAM widget via chilipeppr.load()</td></tr><tr valign="top"><td>loadConsoleWidget</td><td>function</td><td>function (callback) <br><br>Load the Console widget via chilipeppr.load()</td></tr><tr valign="top"><td>loadWorkspaceMenu</td><td>function</td><td>function (callback) <br><br>Load the workspace menu and show the pubsubviewer and fork links using
-our pubsubviewer widget that makes those links for us.</td></tr><tr valign="top"><td>loadMyGPIO</td><td>function</td><td>function (callback) </td></tr><tr valign="top"><td>loadWidgets</td><td>function</td><td>function (callback) </td></tr>
+our pubsubviewer widget that makes those links for us.</td></tr><tr valign="top"><td>loadWidgets</td><td>function</td><td>function (callback) <br><br>Load the workspace menu and show the pubsubviewer and fork links using
+our pubsubviewer widget that makes those links for us.
+/
+loadWorkspaceMenu: function(callback) {
+// Workspace Menu with Workspace Billboard
+var that = this;
+chilipeppr.load(
+"http://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html",
+function() {
+require(['inline:com-chilipeppr-elem-pubsubviewer'], function(pubsubviewer) {<br><br>var el = $('#' + that.id + ' #com-chilipeppr-ws-menu .dropdown-menu-ws');
+console.log("got callback for attachto menu for workspace. attaching to el:", el);<br><br>pubsubviewer.attachTo(
+el,
+that,
+"Workspace"
+);<br><br>if (callback) callback();
+});
+}
+);
+},<br><br>/*
+// GPIO
+// net-delarre-widget-gpio
+loadMyGPIO: function(callback) {
+var that = this;
+chilipeppr.load(
+"#com-chilipeppr-ws-gpio",
+"http://raw.githubusercontent.com/chilipeppr/widget-gpio/master/auto-generated-widget.html",
+function() {
+cprequire(["inline:net-delarre-widget-gpio"], function(gpio) {
+that.gpioInstance = gpio;
+console.log("GPIO instantiated. gpioInstance:", that.gpioInstance);
+that.gpioInstance.init();
+//eagleInstance.activateWidget();
+//if (callback) callback();
+});
+}
+);
+},
+//this.gpioObj.init();
+//End GPIO</td></tr>
       </tbody>
   </table>
 
