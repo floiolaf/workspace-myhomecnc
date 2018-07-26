@@ -74,7 +74,8 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
             this.loadSpjsWidget();
             
             // Mod by FF - Load myCam Widget
-            this.loadMyCamWidget();
+            //this.loadMyCamWidget();
+            this.loadmyHomeCNCWidget();
             
             
             // Most workspaces will instantiate the Serial Port Console widget
@@ -161,6 +162,27 @@ cpdefine("inline:com-chilipeppr-workspace-myhomecnc", ["chilipeppr_ready"], func
                         if (callback) callback(spjs);
 
                     });
+                }
+            );
+        },
+        loadmyHomeCNCWidget: function(callback) {
+            
+            var that = this;
+            
+            chilipeppr.load(
+                "#myDivWidgetMyhomecnc",
+                "http://raw.githubusercontent.com/floiolaf/widget-myhomecnc/master/auto-generated-widget.html",
+                function() {
+                    // Callback after widget loaded into #myDivWidgetMyhomecnc
+                    // Now use require.js to get reference to instantiated widget
+                    cprequire(
+                        ["inline:com-chilipeppr-widget-myhomecnc"], // the id you gave your widget
+                        function(myObjWidgetMyhomecnc) {
+                            // Callback that is passed reference to the newly loaded widget
+                            console.log("Widget / myHomeCNC just got loaded.", myObjWidgetMyhomecnc);
+                            myObjWidgetMyhomecnc.init();
+                        }
+                    );
                 }
             );
         },
